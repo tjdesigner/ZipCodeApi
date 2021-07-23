@@ -1,0 +1,8 @@
+{
+  "name": "searchbyzipcode",
+  "version": "1.0.0",
+  "description": "Service that returns addresses by zip code",
+  "main": "index.js",
+  "author": "Tiago de Jesus",
+  "license": "MIT"
+}
