@@ -4,5 +4,12 @@
   "description": "Service that returns addresses by zip code",
   "main": "index.js",
   "author": "Tiago de Jesus",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "tj-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
 }
