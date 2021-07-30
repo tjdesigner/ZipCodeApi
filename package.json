@@ -5,10 +5,11 @@
   "main": "index.js",
   "author": "Tiago de Jesus",
   "license": "MIT",
-    "scripts": {
+  "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts"
   },
   "dependencies": {
+    "cep-promise": "^4.1.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
