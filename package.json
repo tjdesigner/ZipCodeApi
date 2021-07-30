@@ -4,5 +4,8 @@
   "description": "Service that returns addresses by zip code",
   "main": "index.js",
   "author": "Tiago de Jesus",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
 }
