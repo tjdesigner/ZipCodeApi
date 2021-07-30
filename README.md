@@ -1,5 +1,7 @@
 # ZipCodeApi
 
+Escolhi o NodeJS por se tratar de Javascript, o que se torna um fator considerável em relação a curva de aprendizagem, principalmente para quem já trabalha no desenvolvimento frontend.
+
 # Clone the project
 
 https://github.com/tjdesigner/ZipCodeApi.git
