@@ -42,7 +42,7 @@ app.get("/:mycep", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-  return res.sendFile(path.join(__dirname + "/index.html"))
+  return res.sendFile(path.join(__dirname + "../../dist/index.html"))
 })
 
 app.listen(`${port}`, () => {
