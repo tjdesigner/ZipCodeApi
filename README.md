@@ -17,3 +17,7 @@ yarn dev
 # Do some tests by entering valid and invalid /{cep_number}
 
 ex: localhost:3333/73340000
+
+# The service to be tested using the URL (AWS):
+
+http://54.233.171.144:3333/<cep_number>
