@@ -1,5 +1,5 @@
-import cepPrommice from "cep-promise"
-import express from "express"
+const cep = require("cep-promise")
+const express = require("express")
 
 const app = express()
 const port = 3333
@@ -16,9 +16,9 @@ interface ErrorProps {
   service: string
 }
 
-app.get("/:cep", (req, res) => {
-  const { cep } = req.params
-  cepPrommice(cep)
+app.get("/:mycep", (req, res) => {
+  const { mycep } = req.params
+  cep(mycep)
     .then((result: Promise<ErrorProps>) => {
       return res.json(result)
     })
