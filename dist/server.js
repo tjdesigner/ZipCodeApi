@@ -41,11 +41,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var app = express_1.default();
+var port = 3333;
 app.get("/:cep", function (req, res) {
     var cep = req.params.cep;
     cep_promise_1.default(cep)
         .then(function (result) {
-        console.log(result);
         return res.json(result);
     })
         .catch(function (error) {
@@ -53,16 +53,18 @@ app.get("/:cep", function (req, res) {
             genericMessage: "CEP não encontrado em nenhuma das bases",
             serviceErrors: error,
         };
-        var filterByServiceName = function (nameService) { return genericStatus.serviceErrors.errors.find(function (obj) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, obj];
-                case 1: return [2 /*return*/, (_a.sent()).service === nameService];
-            }
-        }); }); }); };
+        var filterByServiceName = function (nameService) {
+            return genericStatus.serviceErrors.errors.find(function (obj) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, obj];
+                    case 1: return [2 /*return*/, (_a.sent()).service === nameService];
+                }
+            }); }); });
+        };
         var response = res.json(filterByServiceName("correios"));
         return response;
     });
 });
-app.listen(3333, function () {
+app.listen("" + port, function () {
     console.log("API Started!!!");
 });
