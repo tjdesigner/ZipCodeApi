@@ -1,5 +1,6 @@
 const cep = require("cep-promise")
 const express = require("express")
+var path = require("path")
 
 const app = express()
 const port = 3333
@@ -38,6 +39,10 @@ app.get("/:mycep", (req, res) => {
 
       return response
     })
+})
+
+app.get("/", (req, res) => {
+  return res.sendFile(path.join(__dirname + "/index.html"))
 })
 
 app.listen(`${port}`, () => {
