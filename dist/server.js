@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 var cep = require("cep-promise");
 var express = require("express");
+var path = require("path");
 var app = express();
 var port = 3333;
 app.get("/:mycep", function (req, res) {
@@ -61,6 +62,9 @@ app.get("/:mycep", function (req, res) {
         var response = res.json(filterByServiceName("correios"));
         return response;
     });
+});
+app.get("/", function (req, res) {
+    return res.sendFile(path.join(__dirname + "/../src/index.html"));
 });
 app.listen("" + port, function () {
     console.log("API Started!!!");
