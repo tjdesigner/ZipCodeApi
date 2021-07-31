@@ -2,32 +2,37 @@ import cepPrommice from "cep-promise"
 import express from "express"
 
 const app = express()
+const port = 3333
 
 interface GenericErrosItems {
   genericMessage: string
-  serviceErrors: Error
+  serviceErrors: ErrorProps
 }
 
-interface ErrosProps {
-    name: string,
-    message: string
-    service: string
+interface ErrorProps {
+  errors: []
+  name: string
+  message: string
+  service: string
 }
 
 app.get("/:cep", (req, res) => {
   const { cep } = req.params
   cepPrommice(cep)
-    .then((result: Promise<{}>) => {
-      console.log(result)
+    .then((result: Promise<ErrorProps>) => {
       return res.json(result)
     })
-    .catch((error: Error) => {
+    .catch((error: ErrorProps) => {
       const genericStatus: GenericErrosItems = {
-          genericMessage: "CEP não encontrado em nenhuma das bases",
-          serviceErrors: error,
+        genericMessage: "CEP não encontrado em nenhuma das bases",
+        serviceErrors: error,
       }
 
-      const filterByServiceName = (nameService: string) => genericStatus.serviceErrors.errors.find(async (obj: Promise<ErrosProps>) => (await obj).service === nameService);
+      const filterByServiceName = (nameService: string) =>
+        genericStatus.serviceErrors.errors.find(
+          async (obj: Promise<ErrorProps>) =>
+            (await obj).service === nameService
+        )
 
       const response = res.json(filterByServiceName("correios"))
 
@@ -35,6 +40,6 @@ app.get("/:cep", (req, res) => {
     })
 })
 
-app.listen(3333, () => {
+app.listen(`${port}`, () => {
   console.log("API Started!!!")
 })
