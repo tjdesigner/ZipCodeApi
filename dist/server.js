@@ -39,7 +39,7 @@ var cep = require("cep-promise");
 var express = require("express");
 var path = require("path");
 var app = express();
-var port = 3333;
+var port = process.env.PORT || 3333;
 app.get("/:mycep", function (req, res) {
     var mycep = req.params.mycep;
     cep(mycep)
